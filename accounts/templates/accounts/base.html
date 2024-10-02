@@ -1,0 +1,20 @@
+{% extends 'todoApp/base.html' %}
+{% block 'import' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% endblock %}
+{% block title %}authentication{% endblock %}
+
+{% block registeration %}{% endblock %}
+
+{% block content %}
+<div class="flex-column d-flex justify-content-center h-100">
+    <h1 class='text-center'>{% block innerTitle %}{% endblock %}</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input class="btn btn-dark" type="submit" value="{% block order %}{% endblock %}">
+        <p>{% block redirect %}{% endblock %}</p>
+    </form>
+</div>
+{% endblock %}

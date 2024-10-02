@@ -1,0 +1,6 @@
+{% extends "accounts/base.html" %}
+{% load i18n %}
+{% block innerTitle %}{% trans 'Login' %}{% endblock %}
+{% block order %}{% trans 'Login' %}{% endblock %}
+<!-- block translate this !!! -->
+{% block redirect %}Don't have an account? register <a href="{% url 'accounts:signup' %}">Here</a>.{% endblock %}

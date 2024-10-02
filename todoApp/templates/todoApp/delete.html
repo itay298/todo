@@ -1,0 +1,12 @@
+{% extends 'todoApp/base.html' %}
+{% block import %}
+{% load crispy_forms_tags %}
+{% endblock %}
+{% block title %}Delete todo note{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    {{ form|crispy }}
+    <input class="btn btn-dark" type="submit" value="Confirm">
+</form>
+{% endblock %}

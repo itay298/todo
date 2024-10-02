@@ -1,0 +1,29 @@
+{% extends 'todoApp/base.html' %}
+{% block title %}Home{% endblock %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class='text-center'>{% trans 'Add todo notes' %}</h1>
+<form action="." method="post" class="row justify-content-center my-2">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <div class="btt">
+        <input class="btn btn-dark w-100" type="submit" value="{% trans 'Submit' %}">
+    </div>
+</form>
+<ul class="todoList list-group">
+
+    {% for todo in user.todos.all %}
+    {% comment %} {% if forloop.counter == 5 %}{% with load_more=True %}{% endif %} {% endcomment %}
+    <li class="item{{ forloop.counter }} list-group-item d-flex justify-content-between align-items-center">
+        <!-- Add trans here! -->
+        <span class="ps-2">{{ todo.title }}</span>
+        <span class="icons user-select-none">
+            <a class="btn" href="{% url 'todo:update' todo.pk %}"><i class="fa-solid fa-pen-nib"></i></a>
+            <a class="btn" href="{% url 'todo:delete' todo.pk %}"><i class="fa-solid fa-trash"></i></a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,4 @@
+{% extends "accounts/base.html" %}
+{% block innerTitle %}Login{% endblock %}
+{% block order %}Login{% endblock %}
+{% block redirect %}Already have an account? login <a href="{% url 'accounts:login' %}">Here</a>.{% endblock %}

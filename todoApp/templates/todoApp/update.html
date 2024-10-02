@@ -1,0 +1,14 @@
+{% extends 'todoApp/base.html' %}
+{% block 'import' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% endblock %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<form action="." method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input class="btn btn-dark" type="submit" value="{% trans 'Update' %}">
+</form>
+{% endblock %}
